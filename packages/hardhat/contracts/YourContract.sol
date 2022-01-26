@@ -6,21 +6,25 @@ import "hardhat/console.sol";
 // https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/access/Ownable.sol
 
 contract YourContract {
-
-    // you pay gas_spent * gas_price amount of ether, where:
-    // - gas is a unit of computation
-    // - gas_spent is the total amount of gas used in a transaction
-    // - gas_price is how much ether you are willing to pay per gas.
-
-    // Using up all the gas that you send causes your tx to fail.
-    // state changes are undone.
-    // gas spent are not refunded.
-    uint public i = 0;
-    function forever() public {
-        // Here we run a loop until all of the gas are spent
-        while (true) {
-            i += 1;
+    // soldity supports if, else if and else as well as ternary
+    function foo(uint x) public pure returns (uint) {
+        if (x < 10) {
+            return 0;
+        } else if (x < 20) {
+            return 1;
+        } else {
+            return 2;
         }
+    }
+
+    function ternary(uint _x) public pure returns (uint) {
+         // if (_x < 10) {
+         //     return 1;
+         // }
+         // return 2
+
+         // shorthand 
+         return _x < 10 ? 1 : 2;
     }
 
     // to support receiving ETH by default
