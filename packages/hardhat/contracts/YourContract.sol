@@ -6,34 +6,18 @@ import "hardhat/console.sol";
 // https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/access/Ownable.sol
 
 contract YourContract {
-    //bool
-    bool public boo = true;
+    // State variables are stored on the blockchain
+    string public text = "Zord";
+    uint public num = 123;
 
-    //uint 
-    uint8 public u8 = 1;
-    uint16 public u256 = 456;
-    uint public u = 123; // uint is an alias for uint256
-
-    int8 public i8 = -1;
-    int16 public i16 = -525;
-    int public i = -123;
-
-    //min and max
-    int public minInt = type(int).min;
-    int public maxInt = type(int).max;
-
-    //addr 
-    address public addr = 0xCA35b7d915458EF540aDe6068dFe2F44E8fa733c;
-
-    //bytes
-    bytes1 a = 0xb5;
-    bytes1 b = 0x65;
-    
-    //default vars
-    bool public defaltBoo; // false
-    uint public defaultUint; //0
-    int public defaultInt; //0
-    address public defaultAddr; //0x000000000000000000000000000000;
+    function doSomething() public {
+        // local variables are not stored on the blocked chain
+        uint i = 456;
+        
+        // here are some global variables 
+        uint timestamp = block.timestamp; // the current timestamp
+        address sender = msg.sender; // address of the caller
+    }
 
     // event SetPurpose(address sender, string greeting);
     string public greeting = "Building Unstoppable Apps!!!";
