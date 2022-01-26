@@ -6,19 +6,22 @@ import "hardhat/console.sol";
 // https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/access/Ownable.sol
 
 contract YourContract {
-    // Constants
-    address public constant MY_ADDRESS = 0x777788889999AaAAbBbbCcccddDdeeeEfFFfCcCc;
-    uint public constant MY_UINT = 123;
+    // to write or update a state variable, you need to send a transaction
+    // to read state variable for free, without sending a trasaction
 
-    //immuatables are constants which can be set inside the constructor
-    address public immutable MY_IMMUT_ADDRESS;
-    uint public immutable MY_IMMUT_UINT;
+    uint public num;
 
-    constructor(uint _uint) {
-        MY_IMMUT_UINT = _uint;
-        MY_IMMUT_ADDRESS = msg.sender;
-    // what should we do on deploy?
+    // you need to send a transaction to write to a state variable
+    function set(uint _num) public {
+        num = _num;
     }
+
+    // you can read from a state variable without sending a transaction
+    function get() public view returns (uint) {
+        return num;
+    }
+
+
     // event SetPurpose(address sender, string greeting);
     string public greeting = "Building Unstoppable Apps!!!";
 
