@@ -6,31 +6,14 @@ import "hardhat/console.sol";
 // https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/access/Ownable.sol
 
 contract YourContract {
-    // to write or update a state variable, you need to send a transaction
-    // to read state variable for free, without sending a trasaction
 
-    uint public num;
+    uint public oneWei = 1 wei;
+    // 1 wei is equal to 1
+    bool public isOneWei = 1 wei == 1;
 
-    // you need to send a transaction to write to a state variable
-    function set(uint _num) public {
-        num = _num;
-    }
-
-    // you can read from a state variable without sending a transaction
-    function get() public view returns (uint) {
-        return num;
-    }
-
-
-    // event SetPurpose(address sender, string greeting);
-    string public greeting = "Building Unstoppable Apps!!!";
-
-
-    function setGreeting(string memory newPurpose) public {
-      greeting = newPurpose;
-      console.log(msg.sender,"set greeting to",greeting);
-      // emit SetPurpose(msg.sender, greeting);
-    }
+    uint public oneEther = 1 ether;
+    // 1 ether is equal to 10^18 wei
+    bool public isOneEther = 1 ether == 1e18;
 
     // to support receiving ETH by default
     receive() external payable {}
