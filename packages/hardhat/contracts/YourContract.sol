@@ -7,13 +7,21 @@ import "hardhat/console.sol";
 
 contract YourContract {
 
-    uint public oneWei = 1 wei;
-    // 1 wei is equal to 1
-    bool public isOneWei = 1 wei == 1;
+    // you pay gas_spent * gas_price amount of ether, where:
+    // - gas is a unit of computation
+    // - gas_spent is the total amount of gas used in a transaction
+    // - gas_price is how much ether you are willing to pay per gas.
 
-    uint public oneEther = 1 ether;
-    // 1 ether is equal to 10^18 wei
-    bool public isOneEther = 1 ether == 1e18;
+    // Using up all the gas that you send causes your tx to fail.
+    // state changes are undone.
+    // gas spent are not refunded.
+    uint public i = 0;
+    function forever() public {
+        // Here we run a loop until all of the gas are spent
+        while (true) {
+            i += 1;
+        }
+    }
 
     // to support receiving ETH by default
     receive() external payable {}
